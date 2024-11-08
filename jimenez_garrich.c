@@ -159,6 +159,13 @@ int main(int argc, char *argv[])
 		return (1);
 	}
 
+	if (listen(sock, BACKLOG) == -1)
+	{
+		perror("listen() function failed");
+		close(sock);
+		return (1);
+	}
+
 	/* Main loop */
 	while (1) {
 		struct sockaddr_in their_addr; //Adreça del client (connexió entrant)
